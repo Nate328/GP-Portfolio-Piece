@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class Buttonscript : MonoBehaviour
 {
     public int state;
-    public bool locked;
+    public bool locked;  //Does it have a cost?
     public int costtype;   //0 = money. 1 = key. 2 = doodad.
     public int cost;
     private Uiscript inv;
@@ -26,7 +26,7 @@ public class Buttonscript : MonoBehaviour
     public UnityEngine.Object taskscript;
     private GameObject tholder;
 
-    void Start()
+    void Start()   //finds all the UI, input and game objects it needs to function
     {
         inv = GameObject.Find("Canvas").GetComponent<Uiscript>();
         interact = act.FindActionMap("New action map").FindAction("Interact");
@@ -40,11 +40,11 @@ public class Buttonscript : MonoBehaviour
     {
         if (act.FindAction("Interact").ReadValue<float>() > 0)
         {
-            if (!locked)
+            if (!locked)  //activates the button's function if never locked
             {
                 Corefunction();
             }
-            else if (locked && inv.Spend(costtype, cost))
+            else if (locked && inv.Spend(costtype, cost))  //actiavtes the button's function if they have the key, or key equivalent.
             {
                 Corefunction();
             }
@@ -53,12 +53,10 @@ public class Buttonscript : MonoBehaviour
 
     void Corefunction()  //whatever the button does- in this case, move objects & provide a cutscene.
     {
-        var script = gameObject.GetComponent(Type.GetType(taskscript.name));
-        //script.;
+        var script = gameObject.GetComponent(Type.GetType(taskscript.name));   //gets the script it needs to activate
         camcode.CutCamerachange(lookangle, (door.oldspot + lookoffset));
         door.newspot = shift;
         door.act = state;
-        //state = -state;
     }
     
     

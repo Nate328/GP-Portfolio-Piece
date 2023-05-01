@@ -31,7 +31,7 @@ public class Gelcube : MonoBehaviour
 
     public GameObject cargo;
 
-    void Awake()
+    void Awake()  //gets child components & navmesh
     {
         agent = GetComponent<NavMeshAgent>();
         attack = transform.GetChild(1).GetComponent<BoxCollider>();
@@ -43,21 +43,20 @@ public class Gelcube : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (iframes > 0)
+        if (iframes > 0)  //checks if it is in invincibility frames
         {
             iframes -= 0.1f;
             if (iframes <= 0)
             {
-                gameObject.GetComponent<MeshRenderer>().material = basemat;
+                gameObject.GetComponent<MeshRenderer>().material = basemat;  //changes colour back to normal when vulnerable again
             }
         }
 
-        if (!aggro)
+        if (!aggro)  //moves around without a target
         {
             Patrol();
-            //Hop();
         }
-        else
+        else  //moves towards the player, hopping
         {
             transform.LookAt(target.transform.position);
             transform.eulerAngles = new Vector3(0, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
@@ -66,29 +65,27 @@ public class Gelcube : MonoBehaviour
         }
     }
 
-    void Hop()
+    void Hop() //move the slime in bounding leaps
     {
-        //move the slime in bounding leaps
         if (falling)
         {
             speed = new Vector3(speed.x, -2, speed.z);
         }
-        else
+        else  //if not falling, bounces up again
         {
             speed = new Vector3(speed.x, jump, speed.z);
             falling = true;
             attack.enabled = true;
         }
-
         rb.velocity += direction * speed;
     }
 
-    void Patrol()
+    void Patrol()  //wanders towards a preset destination
     {
         agent.destination = destination;
     }
 
-    public void Chase(GameObject victim, bool hunt)
+    public void Chase(GameObject victim, bool hunt)   //Target, or disengage, the player
     {
         if (hunt)
         {
@@ -105,7 +102,7 @@ public class Gelcube : MonoBehaviour
         }
     }
 
-    public void Pain()
+    public void Pain()  //deal damage to the slime, and begin its i-frames
     {
         gameObject.GetComponent<MeshRenderer>().material = painmat;
         if (iframes <= 0)
@@ -120,27 +117,25 @@ public class Gelcube : MonoBehaviour
         }
     }
 
-    void Die()
+    void Die()  //kill the slime, and if it is large enough, it splits
     {
-        if (scale != 'S')
+        if (scale != 'S')  //small slimes don't split
         {
             var sizedown = 'S';
             if (scale == 'L')
             {
-                if (cargo != null)
+                if (cargo != null) //if the slime is carrying something, it drops it
                 { cargo.transform.parent = null;}
                 sizedown = 'M';
             }
 
-            GameObject blob = Instantiate(prefab, transform.position, transform.rotation);
+            GameObject blob = Instantiate(prefab, transform.position, transform.rotation);  //creates a pair of new, smaller slimes
             blob = Instantiate(prefab, transform.position, transform.rotation);
         }
-
-        Debug.Log("deaded.");
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //tells when it touches the ground
     {
         if (other.tag == "Ground")
         {
@@ -148,7 +143,7 @@ public class Gelcube : MonoBehaviour
         }
     }
 
-    public void Land()
+    public void Land()   //lets the slime jump again
     {
         falling = false;
         attack.enabled = false;

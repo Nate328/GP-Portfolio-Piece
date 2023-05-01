@@ -13,18 +13,17 @@ public class camerashift : MonoBehaviour
 
     void Start()
     {
-        if (focalobject != null)
+        if (focalobject != null)  //allows for objects to be loaded as focal points, without causing issues if not used.
         {
             focalpoint = focalobject.transform.position;}
-        //focalpoint += transform.parent.position;
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player")  //activates when the player touches the hitbox
         {
-            GameObject.Find("Cameraprop").GetComponent<Thecamera>().Camerachange(nextcam, orient);
-            GameObject.Find("Cameraprop").GetComponent<Thecamera>().Cameracurve(focalpoint);
+            GameObject.Find("Cameraprop").GetComponent<Thecamera>().Camerachange(nextcam, orient);  //sets the new camera view and angle
+            GameObject.Find("Cameraprop").GetComponent<Thecamera>().Cameracurve(focalpoint);  //sets a focal point for the camera
         }
     }
 }

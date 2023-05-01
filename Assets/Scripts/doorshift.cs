@@ -21,12 +21,12 @@ public class doorshift : MonoBehaviour
 
     void Update() //moves the door, if it needs to
     {
-        if (act > 0)
+        if (act > 0)   //move from its starting position to a new one
         {
             transform.position = Vector3.Lerp(oldspot, newspot, increment);
             Progress(newspot);
         }
-        else if (act < 0)
+        else if (act < 0)   //move back from its new position to the starting one
         {
             transform.position = Vector3.Lerp(transform.position, oldspot, increment);
             Progress(oldspot);
@@ -36,7 +36,7 @@ public class doorshift : MonoBehaviour
     void Progress(Vector3 target) //increments the door, and stops everything once it's done.
     {
         increment += 0.001f;
-        if (transform.position == target)
+        if (transform.position == target) //Once the door has reached its destination
         {
             act = 0;
             camcode.CutCameraback();

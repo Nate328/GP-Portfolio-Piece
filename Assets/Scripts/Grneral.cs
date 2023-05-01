@@ -5,30 +5,9 @@ using UnityEngine.InputSystem;
 
 public class Grneral : MonoBehaviour
 {
-    public InputAction pause;
-    private bool paused;
-    
-    // Start is called before the first frame update
-    void Start()
+    void Start()  //Makes the mouse dissapear when you click
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        pause.performed += ctx => { Paused(ctx);};
-        pause.Enable();
-    }
-
-    void Paused(InputAction.CallbackContext context )
-    {
-        if (!paused)
-        {
-            Time.timeScale = 0f;
-            paused = true;
-        }
-
-        if (paused)
-        {
-            Time.timeScale = 0f;
-            paused = true;
-        }
     }
 }

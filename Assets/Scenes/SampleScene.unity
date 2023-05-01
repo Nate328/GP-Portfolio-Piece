@@ -28186,7 +28186,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 21.3}
+  m_AnchoredPosition: {x: 0, y: -26}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1639861617
@@ -34160,15 +34160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f156dd1e9e7d284d892ba914702792f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pause:
-    m_Name: Pause
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 9cd0dd1e-d9f0-4a58-a7d1-8f87815ff411
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
 --- !u!4 &2098728944
 Transform:
   m_ObjectHideFlags: 0
@@ -34354,7 +34345,7 @@ MonoBehaviour:
   lookangle: {x: 45, y: 90, z: 0}
   lookoffset: {x: 0, y: -6, z: 0}
   act: {fileID: -944628639613478452, guid: c4bcb636757dc344e8dafb83ee1b348b, type: 3}
-  taskscript: {fileID: 11500000, guid: 815efd0d55d67fe45a92bd6bbe66a493, type: 3}
+  taskscript: {fileID: 11500000, guid: f379a3797da6d3a4689ba1318de71656, type: 3}
 --- !u!114 &2140134666
 MonoBehaviour:
   m_ObjectHideFlags: 0
