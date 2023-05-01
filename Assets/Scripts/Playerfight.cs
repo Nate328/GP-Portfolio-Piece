@@ -14,9 +14,12 @@ public class Playerfight : MonoBehaviour
     public int health;
     public int healthmax = 10;
     private float iframes;
+
+    public int strength;
     
-    void Start()
+    void Start() //
     {
+        strength = 1;
         health = healthmax;
         attack.performed += ctx => { Hit(ctx); };
         attack.Enable();
@@ -50,7 +53,7 @@ public class Playerfight : MonoBehaviour
         if (other.tag == "Foe")
         {
             Debug.Log("stab");
-            other.GetComponent<Gelcube>().Pain();
+            other.GetComponent<Gelcube>().Pain(strength);
         }
     }
 

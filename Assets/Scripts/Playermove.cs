@@ -29,7 +29,7 @@ public class Playermove : MonoBehaviour
     public GameObject prefab;
     public Vector3 spawn;
     
-    void Start()
+    void Start() //
     {
         rb = gameObject.GetComponent<Rigidbody>();
         anim = gameObject.GetComponent<Animator>();

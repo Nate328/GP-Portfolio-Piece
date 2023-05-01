@@ -102,12 +102,12 @@ public class Gelcube : MonoBehaviour
         }
     }
 
-    public void Pain()  //deal damage to the slime, and begin its i-frames
+    public void Pain(int dmg)  //deal damage to the slime, and begin its i-frames
     {
         gameObject.GetComponent<MeshRenderer>().material = painmat;
         if (iframes <= 0)
         {
-            health -= 1;
+            health -= dmg;
             if (health <= 0)
             {
                 Die();

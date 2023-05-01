@@ -19,7 +19,7 @@ public class Movingplat : MonoBehaviour
     private Vector3 from;
     private Vector3 to;
 
-    void Start()
+    void Start()  //
     {
         start += transform.parent.position;
         end += transform.parent.position;

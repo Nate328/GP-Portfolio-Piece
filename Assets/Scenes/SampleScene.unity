@@ -22647,7 +22647,7 @@ MonoBehaviour:
   shift: {x: 0, y: 10, z: 0}
   doorform: {fileID: 474285704}
   lookangle: {x: -20, y: 0, z: 0}
-  lookoffset: {x: 0, y: 0, z: 0}
+  lookoffset: {x: -3, y: 4, z: 0}
   act: {fileID: -944628639613478452, guid: c4bcb636757dc344e8dafb83ee1b348b, type: 3}
   taskscript: {fileID: 11500000, guid: f379a3797da6d3a4689ba1318de71656, type: 3}
 --- !u!65 &1108563246
@@ -34342,8 +34342,8 @@ MonoBehaviour:
   cost: 1
   shift: {x: 0, y: -6.9, z: 0}
   doorform: {fileID: 1549369650}
-  lookangle: {x: 45, y: 90, z: 0}
-  lookoffset: {x: 0, y: -6, z: 0}
+  lookangle: {x: 30, y: 0, z: 0}
+  lookoffset: {x: -0.28, y: 7.26, z: -14.93}
   act: {fileID: -944628639613478452, guid: c4bcb636757dc344e8dafb83ee1b348b, type: 3}
   taskscript: {fileID: 11500000, guid: f379a3797da6d3a4689ba1318de71656, type: 3}
 --- !u!114 &2140134666

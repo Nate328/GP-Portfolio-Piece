@@ -9,7 +9,7 @@ public class Sharementum : MonoBehaviour
     private bool ridden;
     private Vector3 velo;
     private Collider passenger;
-    void Start()
+    void Start()  //
     {
         ridden = false;
         pa = transform.parent.GetComponent<Movingplat>();
