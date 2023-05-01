@@ -29,7 +29,7 @@ public class Playermove : MonoBehaviour
     public GameObject prefab;
     public Vector3 spawn;
     
-    void Start() //
+    void Start() //enables the character controls
     {
         rb = gameObject.GetComponent<Rigidbody>();
         anim = gameObject.GetComponent<Animator>();
@@ -43,7 +43,7 @@ public class Playermove : MonoBehaviour
         lockon.Enable();
     }
 
-    void FixedUpdate()
+    void FixedUpdate() //checks player movement
     {
         var movement = move.ReadValue<Vector2>();
         var boost = speed;
@@ -102,7 +102,7 @@ public class Playermove : MonoBehaviour
     }
     
     
-    void Jumping(InputAction.CallbackContext context)
+    void Jumping(InputAction.CallbackContext context)  //lets the player jump
     {
         if (!falling)
         {

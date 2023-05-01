@@ -5454,7 +5454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collected: 0
-  thing: 3
+  thing: 2
 --- !u!1 &177618929
 GameObject:
   m_ObjectHideFlags: 0

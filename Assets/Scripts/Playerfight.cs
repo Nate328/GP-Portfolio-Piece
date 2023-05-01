@@ -17,7 +17,7 @@ public class Playerfight : MonoBehaviour
 
     public int strength;
     
-    void Start() //
+    void Start() //finds all of the components and sets the starting values
     {
         strength = 1;
         health = healthmax;
@@ -29,7 +29,7 @@ public class Playerfight : MonoBehaviour
         burst = gameObject.GetComponent<ParticleSystem>();
     }
 
-    void FixedUpdate()
+    void FixedUpdate()  //gives the player i-frames and lets their attack linger
     {
         if (iframes > 0)
         {
@@ -41,14 +41,14 @@ public class Playerfight : MonoBehaviour
         }
     }
     
-    void Hit(InputAction.CallbackContext context)
+    void Hit(InputAction.CallbackContext context)  //when the player attacks, enables the hitbox, plays an animation and a particle effect
     {
         anim.SetTrigger("Trigger");
         hitbox.enabled = true;
         burst.Play();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)  //if the attack hitbox hits an enemy, trigger their pain script
     {
         if (other.tag == "Foe")
         {
@@ -57,12 +57,12 @@ public class Playerfight : MonoBehaviour
         }
     }
 
-    public void Hurt(int damage)
+    public void Hurt(int damage)  //if the player takes damage, give them i-frames and check if they die
     {
         if (iframes <= 0)
         {
             health -= damage;
-            if (health <= 0)
+            if (health <= 0)  //if the player dies, a new player is made back at spawn
             {
                 health = 10;
                 transform.parent.GetComponent<Playermove>().Die();

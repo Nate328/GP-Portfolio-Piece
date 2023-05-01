@@ -148,25 +148,25 @@ public class Thecamera : MonoBehaviour
         direction = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
     }
 
-    void Startswing(Vector3 orient)
+    void Startswing(Vector3 orient)  //Prepares to swing the camera
     {
         transition = true;
         perspective = orient;
-        nextperspec = Quaternion.Euler(orient);
+        nextperspec = Quaternion.Euler(orient);  //stores the old & new position and rotation values to lerp between
         lastperspec = transform.rotation;
         ocamspot = camerabox.transform.localPosition;
         ocamrot = camerabox.transform.rotation;
         nearing = 0;
     }
 
-    void Camswing()
+    void Camswing()  //moves the camera from one view to the next
     {
         transform.rotation = Quaternion.Lerp(lastperspec, nextperspec, nearing);
-        //add a lerp to shift the rotation & position of the transition camera to match the parent.
+        //adds a lerp to shift the rotation & position of the transition camera to match the parent.
         camerabox.transform.localPosition = Vector3.Lerp(ocamspot, afterSpot, nearing);
         camerabox.transform.localRotation = Quaternion.Lerp(ocamrot, afterRot, nearing);
         nearing += 0.05f;
-        if (nearing >= 1)
+        if (nearing >= 1)  //once it has reached its destination, it stops.
         {
             transition = false;
             if (camerastate == 'S' || camerastate == 'T')

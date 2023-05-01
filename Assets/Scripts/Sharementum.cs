@@ -9,39 +9,30 @@ public class Sharementum : MonoBehaviour
     private bool ridden;
     private Vector3 velo;
     private Collider passenger;
-    void Start()  //
+    void Start()  //find sthe platform it is linked to
     {
         ridden = false;
         pa = transform.parent.GetComponent<Movingplat>();
         velo = pa.velocity;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)  //triggers when a passenger hops on board
     {
         passenger = other;
         ridden = true;
         velo = pa.velocity / 50;
-        //speed = pa.speed;
-        /*if (axis == 'X')
-        { Debug.Log("Defining speed"); movement = new Vector3(speed, 0, 0); }
-        if (axis == 'Y')
-        { movement = new Vector3(0, speed, 0); }
-        if (axis == 'Z')
-        { movement = new Vector3(0, 0, speed); }*/
-
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)  //triggers when a passenger gets off, stopping the momentum sharing
     {
         ridden = false;
     }
 
-    private void FixedUpdate()
+    private void FixedUpdate()  //while a passenger is on the platform, the velocity of the platform is applied to them
     {
         if (ridden)
         {
             velo = pa.velocity / 50;
-            Debug.Log(velo);
             passenger.transform.position += velo;
         }
     }
