@@ -15,7 +15,8 @@ public class camerashift : MonoBehaviour
     {
         if (focalobject != null)  //allows for objects to be loaded as focal points, without causing issues if not used.
         {
-            focalpoint = focalobject.transform.position;}
+            focalpoint = focalobject.transform.position;
+        }
     }
 
     public void OnTriggerEnter(Collider other)

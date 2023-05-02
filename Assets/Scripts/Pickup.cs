@@ -40,13 +40,18 @@ public class Pickup : MonoBehaviour
     {
         if (other.CompareTag("Player") && !collected)
         {
-            burst.SetActive(true);  //plays a pickup particle effect
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
-            if (item < (int) items.NULL)
-            {GameObject.Find("Canvas").GetComponent<Uiscript>().Gainitems(item, true);}  //gives the player the item
-            else if (item > (int) items.NULL)
-            {GameObject.Find("Canvas").GetComponent<Uiscript>().Gainitems(item, false);}
-            collected = true;  //Stops the player from picking it up more than once
+            Collected();
         }
+    }
+
+    public void Collected()
+    {
+        burst.SetActive(true);  //plays a pickup particle effect
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        if (item < (int) items.NULL)
+        {GameObject.Find("Canvas").GetComponent<Uiscript>().Gainitems(item, true);}  //gives the player the item
+        else if (item > (int) items.NULL)
+        {GameObject.Find("Canvas").GetComponent<Uiscript>().Gainitems(item, false);}
+        collected = true;  //Stops the player from picking it up more than once
     }
 }

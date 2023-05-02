@@ -92,6 +92,7 @@ public class Gelcube : MonoBehaviour
             target = victim;
             aggro = true;
             agent.enabled = false;
+            Hop();
             falling = false;
         }
         else
@@ -125,7 +126,7 @@ public class Gelcube : MonoBehaviour
             if (scale == 'L')
             {
                 if (cargo != null) //if the slime is carrying something, it drops it
-                { cargo.transform.parent = null;}
+                { cargo.GetComponent<Pickup>().Collected();}
                 sizedown = 'M';
             }
 

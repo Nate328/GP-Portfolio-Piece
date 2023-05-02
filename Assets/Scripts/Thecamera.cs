@@ -134,7 +134,7 @@ public class Thecamera : MonoBehaviour
 
     void Curvealong()  //lets the camera move around a given point
     {
-        float x = focal.x;
+        /*float x = focal.x;
         float z = focal.z;
         float y = focal.y;
         if (focal.x == 0)   //set any of the three coordinates to zero to allow the camera to follow the player around that axis.
@@ -143,7 +143,18 @@ public class Thecamera : MonoBehaviour
         { z = player.transform.position.z; }
         if (focal.y == 0)
         { y = player.transform.position.z; }
+        focal.y = player.transform.position.z;
         focal = new Vector3(x, y, z);  
+        
+        direction = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);*/
+        float x = focal.x;
+        float z = focal.z;
+        if (focal.x == 0)
+        { x = player.transform.position.x; }
+
+        if (focal.y == 0)
+        { z = player.transform.position.z; }
+        focal = new Vector3(x, player.transform.position.y, z);
         
         direction = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
     }
